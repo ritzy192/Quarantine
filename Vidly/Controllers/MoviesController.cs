@@ -12,7 +12,7 @@ namespace Vidly.Controllers
         // GET: Movies/Random
         public ActionResult Random()
         {
-            var movie = new Movie() { Name = "Hum Aapke Hai Kaun"};
+            var movie = new Movie() { Name = "Hum Aapke Hai Kaun" };
             return View(movie);
         }
 
@@ -25,6 +25,7 @@ namespace Vidly.Controllers
             return Content(String.Format("pageIndex = {0}&sotyBy = {1}", pageIndex, sortBy));
         }
 
+        [Route("movies/released/{year}/{month}")]
         public ActionResult ByReleaseDate(int year, int month)
         {
             return Content(String.Format("year = {0} \n month{1}", year, month));   
