@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
 using Udemy_Vidly.Models;
+using Udemy_Vidly.ViewModel;
 
 namespace Vidly.Controllers
 {
@@ -24,7 +25,6 @@ namespace Vidly.Controllers
             var customers = _context.Customers.Include(c => c.MembershipType).ToList();
             return View(customers);
         }
-
         public ActionResult Details(int Id)
         {
             var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == Id);
@@ -32,6 +32,15 @@ namespace Vidly.Controllers
                 return HttpNotFound();
             else
                 return View(customer);
+        }
+        public ActionResult New()
+        {
+            var membershipTypes = _context.MembershipTypes.ToList();
+            var viewModel = new NewCustomer
+            {
+                MembershipTypes = membershipTypes
+        };
+            return View(viewModel);
         }
     }
 }
