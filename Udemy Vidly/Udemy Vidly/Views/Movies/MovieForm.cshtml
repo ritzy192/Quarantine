@@ -4,13 +4,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @*@if (String.IsNullOrEmpty(Model.Movie.Name))
-{
-    <h2>New Movie</h2>
-}
-else
-{
-    <h2>Edit Movie</h2>
-}*@
+    {
+        <h2>New Movie</h2>
+    }
+    else
+    {
+        <h2>Edit Movie</h2>
+    }*@
 <h2>New Movie</h2>
 
 @using (Html.BeginForm("Save", "Movies"))
@@ -18,14 +18,17 @@ else
     <div class="form-group">
         @Html.LabelFor(m => m.Movie.Name)
         @Html.TextBoxFor(m => m.Movie.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.Name)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Movie.GenreTypeId)
         @Html.DropDownListFor(m => m.Movie.GenreTypeId, new SelectList(Model.GenreTypes, "Id", "Name"), "Select Membership Types", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.GenreTypeId)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Movie.ReleaseDate)
         @Html.TextBoxFor(m => m.Movie.ReleaseDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.ReleaseDate)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Movie.DateAdded)
@@ -34,8 +37,14 @@ else
     <div class="form-group">
         @Html.LabelFor(m => m.Movie.InStockCount)
         @Html.TextBoxFor(m => m.Movie.InStockCount, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.InStockCount)
     </div>
     @Html.HiddenFor(m => m.Movie.Id);
+    @Html.AntiForgeryToken()
     <button type="submit" , class="btn btn-primary">Save</button>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
 }
 

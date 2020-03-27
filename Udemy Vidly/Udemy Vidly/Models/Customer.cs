@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using Udemy_Vidly.Models;
+using Udemy_Vidly.Valiadtions;
 
 namespace Vidly.Models
 {
@@ -17,6 +18,7 @@ namespace Vidly.Models
         public MembershipTypes MembershipType { get; set; }
         [Display(Name = "Membership Type")]
         public byte MembershipTypeId { get; set; }
+        [Minimum18YearsOfAge]
         public DateTime? Birthday { get; set; }
     }
 }
