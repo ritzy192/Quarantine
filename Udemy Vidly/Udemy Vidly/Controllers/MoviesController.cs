@@ -7,6 +7,7 @@ using Udemy_Vidly.Models;
 using System.Data.Entity;
 using Vidly.Models;
 using Vidly.ViewModel;
+using Udemy_Vidly.ViewModel;
 
 namespace Vidly.Controllers
 {
@@ -31,14 +32,45 @@ namespace Vidly.Controllers
             var movie = _context.Movies.Include(m => m.GenreType).SingleOrDefault(m => m.Id == Id);
             return View(movie);
         }
-        //public ActionResult New()
-        //{
+        public ActionResult New()
+        {
+            var genreTypes = _context.GenreTypes.ToList();
+            var viewModel = new MovieFormViewModel()
+            {
+                GenreTypes = genreTypes
+            };
+            return View("MovieForm",viewModel);
+        }
+        [HttpPost]
+        public ActionResult Save(Movie movie)
+        {
+            if (movie.Id == 0)
+                _context.Movies.Add(movie);
+            else
+            {
+                var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
+                movieInDb.Name = movie.Name;
+                movieInDb.GenreType = movie.GenreType;
+                movieInDb.ReleaseDate = movie.ReleaseDate;
+                movieInDb.DateAdded = movie.DateAdded;
+                movieInDb.InStockCount = movie.InStockCount;
+            }
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Movies");
+        }
 
-        //}
-
-
-
-
+        public ActionResult Edit(int Id)
+        {
+            var movie = _context.Movies.SingleOrDefault(c => c.Id == Id);
+            if (movie == null)
+                return HttpNotFound();
+            var viewModel = new MovieFormViewModel
+            {
+                Movie = movie,
+                GenreTypes = _context.GenreTypes.ToList()
+            };
+            return View("MovieForm", viewModel);
+        }
 
         // GET: Movies/Random
         public ActionResult Random()
