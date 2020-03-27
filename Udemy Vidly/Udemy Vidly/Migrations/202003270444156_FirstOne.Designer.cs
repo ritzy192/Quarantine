@@ -7,13 +7,13 @@ namespace Udemy_Vidly.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddMovies : IMigrationMetadata
+    public sealed partial class FirstOne : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddMovies));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FirstOne));
         
         string IMigrationMetadata.Id
         {
-            get { return "202003260830389_AddMovies"; }
+            get { return "202003270444156_FirstOne"; }
         }
         
         string IMigrationMetadata.Source

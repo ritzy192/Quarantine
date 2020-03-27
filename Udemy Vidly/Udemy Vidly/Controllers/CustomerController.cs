@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Udemy_Vidly.Models;
 using Udemy_Vidly.ViewModel;
+using Vidly.Models;
 
 namespace Vidly.Controllers
 {
@@ -39,8 +40,48 @@ namespace Vidly.Controllers
             var viewModel = new NewCustomer
             {
                 MembershipTypes = membershipTypes
-        };
+            };
             return View(viewModel);
+        }
+        [HttpPost]
+        public ActionResult Create(Customer customer)
+        {
+            try
+            {
+                _context.Customers.Add(customer);
+                _context.SaveChanges();
+                return RedirectToAction("Index", "Customer");
+                //return View();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+            {
+                Exception raise = dbEx;
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        string message = string.Format("{0}:{1}",
+                            validationErrors.Entry.Entity.ToString(),
+                            validationError.ErrorMessage);
+                        // raise a new exception nesting  
+                        // the current instance as InnerException  
+                        raise = new InvalidOperationException(message, raise);
+                    }
+                }
+                throw raise;
+            }
+        }
+        public ActionResult Edit(int Id)
+        {
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == Id);
+            if (customer == null)
+                return HttpNotFound();
+            var viewModel = new NewCustomer
+            {
+                Customer = customer,
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+            return View("New", viewModel);
         }
     }
 }

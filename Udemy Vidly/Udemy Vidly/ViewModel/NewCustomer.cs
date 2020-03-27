@@ -10,6 +10,6 @@ namespace Udemy_Vidly.ViewModel
     public class NewCustomer
     {
         public IEnumerable<MembershipTypes> MembershipTypes { get; set; }
-        public Customer Customers { get; set; }
+        public Customer Customer { get; set; }
     }
 }

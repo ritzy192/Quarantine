@@ -1,30 +1,31 @@
 ﻿@model Udemy_Vidly.ViewModel.NewCustomer
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = "New";
-                Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>New Customer</h2>
 @using (Html.BeginForm("Create", "Customer"))
 {
     <div class="form-group">
-        @Html.LabelFor(m => m.Customers.Name)
-        @Html.TextBoxFor(m => m.Customers.Name, new { @class = "form-control" })
+        @Html.LabelFor(m => m.Customer.Name)
+        @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
     </div>
     <div class="form-group">
         <label for="Birthday">Date Of Birth</label>
-        @Html.LabelFor(m => m.Customers.Birthday)
-        @Html.TextBoxFor(m => m.Customers.Birthday, new { @class = "form-control" })
+        @Html.LabelFor(m => m.Customer.Birthday)
+        @Html.TextBoxFor(m => m.Customer.Birthday, new { @class = "form-control" })
     </div>
     <div class=" checkbox">
         <label>
-            @Html.CheckBoxFor(m => m.Customers.IsSubscribedToNewsletter) Subscribed to newsletter
+            @Html.CheckBoxFor(m => m.Customer.IsSubscribedToNewsletter) Subscribed to newsletter
         </label>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Customers.MembershipTypeId)
-        @Html.DropDownListFor(m => m.Customers.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Types", new { @class = "form-control" })
+        @Html.LabelFor(m => m.Customer.MembershipTypeId)
+        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Types", new { @class = "form-control" })
     </div>
+    <button type="submit" , class="btn btn-primary">Save</button>
 }

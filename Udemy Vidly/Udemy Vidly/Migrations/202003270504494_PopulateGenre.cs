@@ -2,8 +2,8 @@ namespace Udemy_Vidly.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-    
-    public partial class PopulateGenreTypes : DbMigration
+
+    public partial class PopulateGenre : DbMigration
     {
         public override void Up()
         {
@@ -22,6 +22,7 @@ namespace Udemy_Vidly.Migrations
             Sql("insert into GenreTypes (Name) Values('Science Fiction')");
             Sql("insert into GenreTypes (Name) Values('Romantic Comedy')");
         }
+
         public override void Down()
         {
         }

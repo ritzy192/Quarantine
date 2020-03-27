@@ -7,13 +7,13 @@ namespace Udemy_Vidly.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class PopulateGenreTypes : IMigrationMetadata
+    public sealed partial class PopulateMembershipTypes : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PopulateGenreTypes));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(PopulateMembershipTypes));
         
         string IMigrationMetadata.Id
         {
-            get { return "202003260833472_PopulateGenreTypes"; }
+            get { return "202003270449207_PopulateMembershipTypes"; }
         }
         
         string IMigrationMetadata.Source
