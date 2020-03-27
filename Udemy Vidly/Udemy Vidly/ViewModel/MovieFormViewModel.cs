@@ -7,9 +7,9 @@ using Vidly.Models;
 
 namespace Udemy_Vidly.ViewModel
 {
-    public class NewCustomer
+    public class MovieFormViewModel
     {
-        public IEnumerable<MembershipTypes> MembershipTypes { get; set; }
-        public Customer Customer { get; set; }
+        public IEnumerable<GenreTypes> GenreTypes { get; set; }
+        public Movie Movie { get; set; }
     }
 }

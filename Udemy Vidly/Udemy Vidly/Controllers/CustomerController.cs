@@ -37,21 +37,29 @@ namespace Vidly.Controllers
         public ActionResult New()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
-            var viewModel = new NewCustomer
+            var viewModel = new CustomerFormViewModel
             {
                 MembershipTypes = membershipTypes
             };
-            return View(viewModel);
+            return View("CustomerForm",viewModel);
         }
         [HttpPost]
-        public ActionResult Create(Customer customer)
+        public ActionResult Save(Customer customer)
         {
             try
             {
-                _context.Customers.Add(customer);
+                if (customer.Id == 0)
+                    _context.Customers.Add(customer);
+                else
+                {
+                    var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+                    customerInDb.Name = customer.Name;
+                    customerInDb.Birthday = customer.Birthday;
+                    customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                    customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
+                }
                 _context.SaveChanges();
                 return RedirectToAction("Index", "Customer");
-                //return View();
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
             {
@@ -76,12 +84,12 @@ namespace Vidly.Controllers
             var customer = _context.Customers.SingleOrDefault(c => c.Id == Id);
             if (customer == null)
                 return HttpNotFound();
-            var viewModel = new NewCustomer
+            var viewModel = new CustomerFormViewModel
             {
                 Customer = customer,
                 MembershipTypes = _context.MembershipTypes.ToList()
             };
-            return View("New", viewModel);
+            return View("CustomerForm", viewModel);
         }
     }
 }

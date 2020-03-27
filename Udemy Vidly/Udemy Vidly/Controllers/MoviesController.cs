@@ -31,6 +31,15 @@ namespace Vidly.Controllers
             var movie = _context.Movies.Include(m => m.GenreType).SingleOrDefault(m => m.Id == Id);
             return View(movie);
         }
+        //public ActionResult New()
+        //{
+
+        //}
+
+
+
+
+
         // GET: Movies/Random
         public ActionResult Random()
         {
