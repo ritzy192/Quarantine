@@ -21,7 +21,7 @@ namespace Vidly.Models
         [Display(Name = "Date Of Release")]
         public DateTime ReleaseDate { get; set; }
         [Display(Name = "Available Since")]
-        public DateTime DateAdded { get; set; }
+        public DateTime? DateAdded { get; set; }
         [Required]
         [Range(1,20)]
         public int InStockCount { get; set; }

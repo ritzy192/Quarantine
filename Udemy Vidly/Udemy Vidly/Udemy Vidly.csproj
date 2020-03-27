@@ -231,6 +231,10 @@
     <Compile Include="Migrations\202003271716317_updadeMovieadded3.Designer.cs">
       <DependentUpon>202003271716317_updadeMovieadded3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003271809414_updade43.cs" />
+    <Compile Include="Migrations\202003271809414_updade43.Designer.cs">
+      <DependentUpon>202003271809414_updade43.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -352,6 +356,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003271716317_updadeMovieadded3.resx">
       <DependentUpon>202003271716317_updadeMovieadded3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003271809414_updade43.resx">
+      <DependentUpon>202003271809414_updade43.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
