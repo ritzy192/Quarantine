@@ -17,6 +17,7 @@ namespace Udemy_Vidly.App_Start
             Mapper.CreateMap<Customer, CustomerDto>();
             Mapper.CreateMap<Movie, MovieDto>();
             Mapper.CreateMap<MembershipTypes, MembershipTypeDto>();
+            Mapper.CreateMap<GenreTypes, GenreTypeDto>();
 
 
             // Dto to Domain

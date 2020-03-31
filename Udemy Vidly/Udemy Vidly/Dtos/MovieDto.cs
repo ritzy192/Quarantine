@@ -14,6 +14,7 @@ namespace Udemy_Vidly.Dtos
         public string Name { get; set; }
         [Required]
         public int GenreTypeId { get; set; }
+        public GenreTypeDto GenreType { get; set; }
         [Required]
         public DateTime ReleaseDate { get; set; }
         public DateTime? DateAdded { get; set; }

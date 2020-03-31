@@ -8,6 +8,7 @@ using System.Web.Http;
 using Udemy_Vidly.Dtos;
 using Udemy_Vidly.Models;
 using Vidly.Models;
+using System.Data.Entity;
 
 namespace Udemy_Vidly.Controllers.Api
 {
@@ -21,7 +22,7 @@ namespace Udemy_Vidly.Controllers.Api
         //GET /api/Movies
         public IHttpActionResult GetMovies()
         {
-            var moviesDto = _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
+            var moviesDto = _context.Movies.Include(m => m.GenreType).ToList().Select(Mapper.Map<Movie, MovieDto>);
             return Ok(moviesDto);
         }
         //GET /api/Movies/1
