@@ -15,6 +15,7 @@ namespace Udemy_Vidly.Dtos
         public string Name { get; set; }
         public bool IsSubscribedToNewsletter { get; set; }
         public byte MembershipTypeId { get; set; }
+        public MembershipTypeDto MembershipType { get; set; }
         //[Minimum18YearsOfAge]
         public DateTime? Birthday { get; set; }
     }

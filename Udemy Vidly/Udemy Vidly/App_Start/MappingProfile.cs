@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Udemy_Vidly.Dtos;
+using Udemy_Vidly.Models;
 using Vidly.Models;
 
 namespace Udemy_Vidly.App_Start
@@ -15,6 +16,7 @@ namespace Udemy_Vidly.App_Start
             // Domain to Dto
             Mapper.CreateMap<Customer, CustomerDto>();
             Mapper.CreateMap<Movie, MovieDto>();
+            Mapper.CreateMap<MembershipTypes, MembershipTypeDto>();
 
 
             // Dto to Domain
