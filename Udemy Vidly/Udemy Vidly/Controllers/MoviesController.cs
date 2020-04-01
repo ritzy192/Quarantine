@@ -29,7 +29,6 @@ namespace Vidly.Controllers
             else
                 return View("ReadOnlyList");
         }
-        [Authorize(Roles = RoleName.CanChangeMovies)]
         public ActionResult Details(int Id)
         {
             var movie = _context.Movies.Include(m => m.GenreType).SingleOrDefault(m => m.Id == Id);

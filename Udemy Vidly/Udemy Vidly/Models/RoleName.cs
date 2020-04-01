@@ -7,6 +7,6 @@ namespace Udemy_Vidly.Models
 {
     public static class RoleName
     {
-        public const string CanChangeMovies = "CanChangeMovies";
+        public const string CanChangeMovies = "CanManageMovies";
     }
 }

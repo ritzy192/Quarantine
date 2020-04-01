@@ -35,6 +35,7 @@ namespace Udemy_Vidly.Controllers.Api
         }
         //GET /api/Movies/1
         [HttpPost]
+        [Authorize(Roles = RoleName.CanChangeMovies)]
         public IHttpActionResult CreateMovie(MovieDto movieDto)
         {
             if (!ModelState.IsValid)
@@ -46,6 +47,7 @@ namespace Udemy_Vidly.Controllers.Api
             return Created(new Uri(Request.RequestUri + "/" + movie.Id), movieDto);
         }
         [HttpPut]
+        [Authorize(Roles = RoleName.CanChangeMovies)]
         public void UpdateMovie(int id, MovieDto movieDto)
         {
             if (!ModelState.IsValid)
@@ -58,6 +60,7 @@ namespace Udemy_Vidly.Controllers.Api
             _context.SaveChanges();
         }
         [HttpDelete]
+        [Authorize(Roles = RoleName.CanChangeMovies)]
         public void DeleteMovie(int id)
         {
             var movieInDb = _context.Movies.SingleOrDefault(c => c.Id == id);

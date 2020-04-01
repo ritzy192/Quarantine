@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Udemy_Vidly.Models;
+using Udemy_Vidly.ViewModel;
 
 namespace Udemy_Vidly.Controllers
 {
@@ -154,7 +155,9 @@ namespace Udemy_Vidly.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email,
                     Email = model.Email ,
-                    DrivingLicence = model.DrivingLicense};
+                    DrivingLicence = model.DrivingLicense,
+                    MobileNumber = model.MobileNumber
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -372,7 +375,8 @@ namespace Udemy_Vidly.Controllers
                 }
                 var user = new ApplicationUser { UserName = model.Email,
                     Email = model.Email,
-                    DrivingLicence = model.DrivingLicense
+                    DrivingLicence = model.DrivingLicense,
+                    MobileNumber = model.MobileNumber
                 };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)

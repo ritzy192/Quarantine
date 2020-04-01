@@ -263,11 +263,16 @@
     <Compile Include="Migrations\202003311646545_addDrivinglicenceToApplicationUser.Designer.cs">
       <DependentUpon>202003311646545_addDrivinglicenceToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004010507174_addMobilenumberToApplicationUser.cs" />
+    <Compile Include="Migrations\202004010507174_addMobilenumberToApplicationUser.Designer.cs">
+      <DependentUpon>202004010507174_addMobilenumberToApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\GenreTypes.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipTypes.cs" />
     <Compile Include="Models\Movie.cs" />
@@ -276,8 +281,10 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Valiadtions\Minimum18YearsOfAge.cs" />
     <Compile Include="ViewModel\CustomerFormViewModel.cs" />
+    <Compile Include="ViewModel\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModel\MovieFormViewModel.cs" />
     <Compile Include="ViewModel\RandomMovieViewModel.cs" />
+    <Compile Include="ViewModel\RegisterViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-lumen.css" />
@@ -570,6 +577,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003311646545_addDrivinglicenceToApplicationUser.resx">
       <DependentUpon>202003311646545_addDrivinglicenceToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004010507174_addMobilenumberToApplicationUser.resx">
+      <DependentUpon>202004010507174_addMobilenumberToApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
